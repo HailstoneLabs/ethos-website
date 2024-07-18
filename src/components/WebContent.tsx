@@ -100,14 +100,14 @@ export default function WebContent({}: Props) {
             <p>12% “STORYTELLING”</p>
             <p>5% TWITTER DOOM SCROLLING</p>
             <p>2% IT’S SO OVER / WE’RE SO BACK</p>
-            <p>1% “HOLD UP. LET EM COOK”</p>
+            <p>1% “ETH ALIGNED”</p>
           </div>
         </div>
         <div className="info-row md:mt-5 text-[14px] md:text-[16px] lg:text-[20px]">
           <div className="info-row--left">CLIENTS</div>
           <div className="info-row--right flex flex-col gap-2 md:gap-5">
             <p>MICHAEL EGOROV “INSPIRED” DEFI PROTOCOL</p>
-            <p>SPACE CULT DEFI ON SOLANA</p>
+            <p>FIRST <span className="line-through">REDACTED</span> ON SOLANA</p>
             <p>CHIP COMPANY (NOT POTATO)</p>
             <p>THE FASTEST ZKVM</p>
             <p>“first principles” crypto vc</p>
