@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { format } from "date-fns";
-import { formatInTimeZone } from "date-fns-tz";
 
 const Clock: React.FC = () => {
-  const [time, setTime] = useState<string>("");
+  const [blockHeight, setBlockHeight] = useState<string>("");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const timeZone = "Asia/Hong_Kong";
-      const zonedDate = formatInTimeZone(now, timeZone, "hh:mm a");
-      setTime(zonedDate);
-    }, 1000);
-
+    const updateLatestBlockNumber = async () => {
+      try {
+        const res = await fetch("https://api.blockcypher.com/v1/eth/main")
+        const result = await res.json();
+        setBlockHeight(result.height);
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    updateLatestBlockNumber()
+    const interval = setInterval(updateLatestBlockNumber, 30 * 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div>
-      <p>{time} HKT</p>
+      <p>{blockHeight}</p>
     </div>
   );
 };
