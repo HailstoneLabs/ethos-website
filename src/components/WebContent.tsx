@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import localFont from "next/font/local";
 import Link from "next/link";
+import Anchor from "./common/Anchor";
 
 type Props = {};
 
@@ -53,7 +54,8 @@ export default function WebContent({}: Props) {
           </p>
         </div>
         <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between md:items-center font-[500] text-[18px] md:text-[24px]">
-          <div id="contact">
+          <Anchor id="contact" />
+          <div>
             <div className={`${PixelFont.className} text-[#1418FF]`}>
               <Link href="mailto:contact@3thos.xyz" className="">
                 CONTACT@3THOS.XYZ

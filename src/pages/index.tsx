@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import Clock from "@/components/Clock";
 import WebContent from "@/components/WebContent";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const NeueMontreal = localFont({
@@ -31,7 +31,11 @@ const NeueMontreal = localFont({
   ],
 });
 
-const NavContent = () => {
+const NavContent = ({
+  setOpenNavMobile,
+}: {
+  setOpenNavMobile?: Dispatch<SetStateAction<boolean>>;
+}) => {
   const router = useRouter();
   const [currentPath, setCurrentPath] = useState("");
 
@@ -42,7 +46,10 @@ const NavContent = () => {
   }, [router.isReady, router]);
 
   return (
-    <div className="flex flex-col side-menu sticky top-8">
+    <div
+      className="flex flex-col side-menu sticky top-8"
+      onClick={() => (setOpenNavMobile ? setOpenNavMobile(false) : {})}
+    >
       <Link href="/">
         <div
           className={`side-menu--item pl-2 md:pl-0 ${
@@ -96,11 +103,7 @@ export default function Home() {
               </div>
             </div>
             {isOpenNavMobile && (
-              <div>
-                <div>
-                  <NavContent />
-                </div>
-              </div>
+              <NavContent setOpenNavMobile={setOpenNavMobile} />
             )}
           </div>
           <div className="col-span-8 mx-auto flex flex-col items-center justify-center w-full uppercase content px-10 md:px-0">
